@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="CS Project"
+run/main_scene="uid://ch64m3j0casix"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
