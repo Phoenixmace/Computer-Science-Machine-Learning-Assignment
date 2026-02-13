@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 
-const ACCELERATION := 20
-const DECELERATION := ACCELERATION *0.75
-const MAX_SPEED := 40
+@export var ACCELERATION := 2
+@export var DECELERATION_FACTOR := 0.3
+var DECELERATION := ACCELERATION * DECELERATION_FACTOR
+@export var MAX_SPEED := 20
 
 @onready var movement_vector := Vector2.ZERO
 
@@ -46,5 +47,7 @@ func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
 		else:
 			current_vector.y = new_horizontal_movement
 #endregion
-	print(current_vector.length())
+	# snap vector to max length
+	if current_vector.length() > MAX_SPEED:
+		current_vector = (current_vector.normalized() * Vector2(MAX_SPEED, MAX_SPEED)).round()
 	return current_vector
