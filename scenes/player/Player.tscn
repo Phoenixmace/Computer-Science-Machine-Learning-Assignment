@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://btwvsa5onorks" path="res://assets/sprites/player/player.png" id="1_wr5hl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfjak"]
-radius = 129.12398
+radius = 127.39309
 
 [node name="Player" type="CharacterBody2D" unique_id=1714357750]
 script = ExtResource("1_gfjak")

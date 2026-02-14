@@ -11,6 +11,7 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 func _physics_process(delta: float) -> void:
 	movement_vector = get_new_movement_vector(movement_vector,delta)
 	global_position = global_position + movement_vector
+
 	pass
 
 
@@ -47,7 +48,22 @@ func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
 		else:
 			current_vector.y = new_horizontal_movement
 #endregion
+
+	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collision_vector =   Vector2(-0.8, -0.8)
+		if collision.get_normal().x == 0:
+			collision_vector.x = 1
+		if collision.get_normal().y == 0:
+			collision_vector.y = 1
+		print(collision_vector, current_vector)
+		current_vector *= collision_vector
+		
+#region cap speed
 	# snap vector to max length
 	if current_vector.length() > MAX_SPEED:
 		current_vector = (current_vector.normalized() * Vector2(MAX_SPEED, MAX_SPEED)).round()
+#endregion
+	
 	return current_vector
