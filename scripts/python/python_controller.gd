@@ -10,12 +10,25 @@ func _ready() -> void:
 
 func _process(delta):
 	peer.poll()  # must call this every frame
+
+	
+func send_request(function_name: String, args:Dictionary):
+	if peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		var request = {"function": function_name, "args":args}
+		var json_string = JSON.stringify(request)
+		peer.put_packet(json_string.to_utf8_buffer())
+		return recieve_packets()
+	else:
+		return false
+	
+
+func recieve_packets():
 	var state = peer.get_ready_state()
 	if state == WebSocketPeer.STATE_OPEN:
 		# connection is ready to send/receive packets
 		while peer.get_available_packet_count() > 0:
 			var packet = peer.get_packet().get_string_from_utf8()
-			print("Received:", packet)
+			return packet
 	elif state == WebSocketPeer.STATE_CONNECTING:
 		# still connecting
 		pass
@@ -24,11 +37,3 @@ func _process(delta):
 		pass
 	elif state == WebSocketPeer.STATE_CLOSED:
 		print("WebSocket closed")
-	
-func send_request(function_name: String, args:Dictionary) -> void:
-	if peer.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		var request = {"function": function_name, "args":args}
-		var json_string = JSON.stringify(request)
-		peer.put_packet(json_string.to_utf8_buffer())
-	else:
-		print("no")

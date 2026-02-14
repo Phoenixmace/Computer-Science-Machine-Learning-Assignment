@@ -10,10 +10,17 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 @export var MAX_SPEED := 20
 
 @onready var movement_vector := Vector2.ZERO
+@onready var controller = get_node("../PythonController")
 
 func _physics_process(delta: float) -> void:
-	movement_vector = get_new_movement_vector(movement_vector,delta, Vector2(-1, 1))
-	global_position = global_position + movement_vector
+	var data = '{ "a": 1, "b": 2 }' # data is a String
+	var recieved_vector = controller.send_request("debug_enemy_movement", {})
+	
+	if recieved_vector:
+		var dict = str_to_var(recieved_vector)     # dict is a Dictionary
+		recieved_vector = str_to_var(recieved_vector)
+		movement_vector = get_new_movement_vector(movement_vector,delta, Vector2(int(recieved_vector["x"]), int(recieved_vector["y"])))
+		global_position = global_position + movement_vector
 
 	pass
 

@@ -9,14 +9,14 @@ var current_enemies: Array = []
 var spawn_timer := 100.0
 
 func _ready() -> void:
-	spawn_enemy()
-
+	pass
 func _process(delta):
 	spawn_timer += delta
 
 	# Check if we can spawn
 	if spawn_timer >= spawn_interval and current_enemies.size() < max_enemies:
 		spawn_enemy()
+		
 		spawn_timer = 0.0
 
 	# Clean up dead enemies
