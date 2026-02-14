@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
+@export var speed := 150
+@export var max_health := 3
 
+var health := max_health
 @export var ACCELERATION := 2
 @export var DECELERATION_FACTOR := 0.3
 var DECELERATION := ACCELERATION * DECELERATION_FACTOR
@@ -9,17 +12,18 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 @onready var movement_vector := Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	movement_vector = get_new_movement_vector(movement_vector,delta)
+	movement_vector = get_new_movement_vector(movement_vector,delta, Vector2(-1, 1))
 	global_position = global_position + movement_vector
 
 	pass
 
 
 ################### movement
-func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
+#region Movement
+func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vector:Vector2) -> Vector2:
 	
 #region Horizontal Movement
-	var horizontal_movement = (int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))) # direction
+	var horizontal_movement = recieved_vector.x # direction
 	# no input
 	if horizontal_movement == 0:
 		if current_vector.x > 0:
@@ -34,7 +38,7 @@ func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
 			current_vector.x = new_horizontal_movement
 #endregion
 #region Vertical Movement
-	var vertical_movement = (int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))) # direction
+	var vertical_movement = recieved_vector.y # direction
 	# no input
 	if vertical_movement == 0:
 		if current_vector.y > 0:
@@ -66,3 +70,9 @@ func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
 #endregion
 	
 	return current_vector
+#endregion
+
+################### python
+func get_current_game_state_for_python():
+	var data = {}
+	return 0

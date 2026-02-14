@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dov6yw10d5ruw" path="res://scenes/player/Player.tscn" id="1_rwgnx"]
 [ext_resource type="TileSet" uid="uid://dfbbkufop1wpu" path="res://assets/tilesets/tileset.tres" id="2_0jlsv"]
 [ext_resource type="Script" uid="uid://d18w0mgpt8aqn" path="res://scripts/components/camera/level_camera.gd" id="3_fqjk7"]
+[ext_resource type="Script" uid="uid://ckkunffc4wglr" path="res://scripts/managers/enemies/enemy_spawner/enemy_spawner.gd" id="4_y3fao"]
+[ext_resource type="PackedScene" uid="uid://bqtjci17es3st" path="res://scenes/enemies/base_melee.tscn" id="5_1txf7"]
+[ext_resource type="Script" uid="uid://h4ojvjc34ynt" path="res://scripts/python/python_controller.gd" id="6_1txf7"]
 
 [node name="BaseLevel" type="Node2D" unique_id=290879843]
 
@@ -18,3 +21,11 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=509859422]
 script = ExtResource("3_fqjk7")
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=2046301675 node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("4_y3fao")
+enemy_scene = ExtResource("5_1txf7")
+spawn_points = [NodePath("../Player")]
+
+[node name="PythonController" type="Node2D" parent="." unique_id=173451401]
+script = ExtResource("6_1txf7")

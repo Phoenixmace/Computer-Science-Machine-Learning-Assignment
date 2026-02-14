@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bqtjci17es3st"]
+
+[ext_resource type="Script" uid="uid://daoay37cnyb3e" path="res://scenes/enemies/base_melee.gd" id="1_7u171"]
+[ext_resource type="Texture2D" uid="uid://b2bkux83do47e" path="res://assets/sprites/enemies/melee/Enemy.png" id="1_wbdyy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbdyy"]
+radius = 82.0
+height = 254.0
+
+[node name="BaseMelee" type="CharacterBody2D" unique_id=1365733535]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_7u171")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1713408707]
+shape = SubResource("CapsuleShape2D_wbdyy")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209070272]
+texture = ExtResource("1_wbdyy")
+metadata/_edit_group_ = true
