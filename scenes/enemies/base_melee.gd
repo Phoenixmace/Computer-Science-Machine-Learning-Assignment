@@ -13,8 +13,9 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 @onready var controller = get_node("../PythonController")
 
 func _physics_process(delta: float) -> void:
-	var data = '{ "a": 1, "b": 2 }' # data is a String
-	var recieved_vector = controller.send_request("debug_enemy_movement", {})
+	var data = get_current_game_state_for_python() # data is a String
+	
+	var recieved_vector = controller.send_request("debug_enemy_movement", data)
 	
 	if recieved_vector:
 		var dict = str_to_var(recieved_vector)     # dict is a Dictionary
@@ -80,6 +81,13 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 #endregion
 
 ################### python
+# Notes: Borders, player pos, player vector, enemy, position, enemy movement vector
 func get_current_game_state_for_python():
-	var data = {}
-	return 0
+	var global = global_position
+	var player = get_node("../Player")
+	var player_coords =  player.global_position - global 
+	var player_movement_vector = player.movement_vector
+	var data = {"player_relative":player_coords,
+	"player_vector":player_movement_vector,
+	"global_position":global_position}
+	return data
