@@ -11,12 +11,13 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 
 @onready var movement_vector := Vector2.ZERO
 @onready var controller = get_node("../PythonController")
+var previous_distance = 0.0
 
 func _physics_process(delta: float) -> void:
-	var data = get_current_game_state_for_python() # data is a String
+	var data = get_current_game_state_for_python(movement_vector) # data is a String
 	
-	var recieved_vector = controller.send_request("debug_enemy_movement", data)
-	
+	var recieved_vector = controller.send_request("enemy_movement", data)
+
 	if recieved_vector:
 		var dict = str_to_var(recieved_vector)     # dict is a Dictionary
 		recieved_vector = str_to_var(recieved_vector)
@@ -82,12 +83,21 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 
 ################### python
 # Notes: Borders, player pos, player vector, enemy, position, enemy movement vector
-func get_current_game_state_for_python():
+func get_current_game_state_for_python(movement_vector):
+#region Observations
 	var global = global_position
 	var player = get_node("../Player")
 	var player_coords =  player.global_position - global 
 	var player_movement_vector = player.movement_vector
-	var data = {"player_relative":player_coords,
+#endregion
+	
+	
+	var reward = previous_distance - player_coords.length()
+	previous_distance = player_coords.length()
+	var data = {"observation":{"player_relative":player_coords,
 	"player_vector":player_movement_vector,
-	"global_position":global_position}
+	"global_position":global_position, 
+	"enemy_vector":movement_vector}, 
+	"previous_reward":reward}
+	
 	return data

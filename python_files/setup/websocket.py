@@ -2,7 +2,7 @@ import asyncio
 import websockets
 import json
 import random
-from python_files.enemy_ai import proof_of_concept
+from python_files.enemy_ai.proof_of_concept.enemy_ai import poc_enemy_movement, new_session
 async def debug_enemy_movement(args):
     return
 async def move_player(args):
@@ -13,7 +13,8 @@ async def move_player(args):
 # Dispatcher: map function names to Python functions
 FUNCTIONS = {
     "move_player": move_player,
-    "enemy_movement":proof_of_concept
+    "enemy_movement":poc_enemy_movement,
+    "new_session":new_session
 }
 
 async def handle_connection(ws):
