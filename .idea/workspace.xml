@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f7135dcf-61dd-4b9b-9ff5-88172870481c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_files/enemy_ai/proof_of_concept/enemy_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_files/enemy_ai/proof_of_concept/enemy_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_time.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_time.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_files/setup/websocket.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_files/setup/websocket.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/base_melee.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/base_melee.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/levels/dev_level/dev_level.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/levels/dev_level/dev_level.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/python/python_controller.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/python/python_controller.gd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,43 +26,73 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Phoenixmace"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Phoenixmace&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Phoenixmace/Computer-Science-Machine-Learning-Assignment.git",
-    "accountId": "1402a848-d37e-4b3f-92ff-c7f7edf45e2a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Phoenixmace/Computer-Science-Machine-Learning-Assignment.git&quot;,
+    &quot;accountId&quot;: &quot;1402a848-d37e-4b3f-92ff-c7f7edf45e2a&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="39kVxPJw2o8f48SIudY0trTpziN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.enemy_ai.executor": "Run",
-    "Python.websocket.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.enemy_ai.executor&quot;: &quot;Run&quot;,
+    &quot;Python.websocket.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="websocket" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Computer-Science-Machine-Learning-Assignment" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_files/setup" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_files/setup/websocket.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.websocket" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -79,6 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1771240302649</updated>
       <workItem from="1771240303714" duration="7035000" />
+      <workItem from="1771331662165" duration="1668000" />
     </task>
     <servers />
   </component>
@@ -87,6 +118,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Computer_Science_Machine_Learning_Assignment$enemy_ai.coverage" NAME="enemy_ai Coverage Results" MODIFIED="1771253820829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_files/enemy_ai/proof_of_concept" />
-    <SUITE FILE_PATH="coverage/Computer_Science_Machine_Learning_Assignment$websocket.coverage" NAME="websocket Coverage Results" MODIFIED="1771253948474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_files/setup" />
+    <SUITE FILE_PATH="coverage/Computer_Science_Machine_Learning_Assignment$websocket.coverage" NAME="websocket Coverage Results" MODIFIED="1771331854300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_files/setup" />
   </component>
 </project>

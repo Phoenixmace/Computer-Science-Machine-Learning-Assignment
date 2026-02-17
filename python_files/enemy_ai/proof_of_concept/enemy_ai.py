@@ -3,7 +3,7 @@ import os
 import json
 global current_session_data
 current_session_data = {"steps":[]}
-def load_training_data(path=os.path.join(os.getcwd(), "assets", "poc_data.json")):
+def load_training_data(path=os.path.join(os.getcwd().split("python_files")[0], "assets", "training_data", "poc_data.json")):
     with open(path, "r") as f:
         return json.load(f)
 def random_policy():
@@ -34,11 +34,11 @@ async def poc_enemy_movement(args):
     if previous_reward:
         current_session_data["steps"][-1]["reward"] = previous_reward
     return random_policy()
-async def new_session(args):
-    print("New session started")
+async def close_session(args):
+    print("close_session")
     global current_session_data
     training_data = load_training_data()
     training_data[str(len(training_data)+1)] = current_session_data
-    json.dump(training_data, open(os.path.join(os.getcwd(), "assets", "poc_data.json"), "w"))
+    json.dump(training_data, open(os.path.join(os.getcwd().split("python_files")[0], "assets","training_data", "poc_data.json"), "w"))
     current_session_data = {"steps": []}
-    return
+    return {"message": "Session closed successfully"}

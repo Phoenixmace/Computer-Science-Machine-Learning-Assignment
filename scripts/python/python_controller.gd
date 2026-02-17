@@ -3,11 +3,10 @@ extends Node2D
 @export var server_url: String = "ws://127.0.0.1:8765"
 
 var peer := WebSocketPeer.new()
-var connected := false
+var initiated_session := false
 var action := {}
 func _ready() -> void:
 	peer.connect_to_url(server_url)
-	send_request("new_session", {})
 	print("hey")
 
 func _process(delta):
@@ -39,3 +38,8 @@ func recieve_packets():
 		pass
 	elif state == WebSocketPeer.STATE_CLOSED:
 		print("WebSocket closed")
+
+func close_game():
+	var closing_return_message = send_request("close_session",{})
+	print(closing_return_message)
+	peer.close(1000, "Normal closure")
