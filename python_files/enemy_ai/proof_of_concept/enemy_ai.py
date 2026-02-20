@@ -29,9 +29,11 @@ def model_policy(step):
         (1, 1): 7,
         (0, 0): 8
     }
+    print(action)
     for key, value in action_map.items():
         if value == action:
             return {"x": key[0], "y": key[1]}
+
 def get_data_sample(enemy_position, player_position, player_vector, enemy_vector, input_x=0, input_y=0):
   # idle
     action_map = {
