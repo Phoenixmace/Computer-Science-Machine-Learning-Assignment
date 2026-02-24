@@ -2,7 +2,7 @@ import asyncio
 import websockets
 import json
 import random
-from python_files.enemy_ai.proof_of_concept.enemy_ai import poc_enemy_movement, close_session
+from python_files.enemy.melee_enemy.dev_level.enemy_ai import *
 async def debug_enemy_movement(args):
     return
 async def move_player(args):

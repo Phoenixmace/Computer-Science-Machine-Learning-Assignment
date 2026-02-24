@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 
 ################################################### -Dev
 func start_dev_scene():
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/dev_level/dev_level.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/dev_level/dev.tscn")

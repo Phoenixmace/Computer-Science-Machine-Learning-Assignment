@@ -90,6 +90,7 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 # Notes: Borders, player pos, player vector, enemy, position, enemy movement vector
 func get_current_game_state_for_python(movement_vector):
 #region Observations
+	var level_name = get_tree().current_scene.name
 	var global = global_position
 	var player = get_node("../Player")
 	var player_coords =  player.global_position - global 
@@ -103,6 +104,9 @@ func get_current_game_state_for_python(movement_vector):
 	"player_vector":player_movement_vector,
 	"global_position":global_position, 
 	"enemy_vector":movement_vector}, 
-	"previous_reward":reward}
+	"previous_reward":reward,
+	"level_name":level_name,
+	"type":"melee",
+	"number":"0"}
 	
 	return data

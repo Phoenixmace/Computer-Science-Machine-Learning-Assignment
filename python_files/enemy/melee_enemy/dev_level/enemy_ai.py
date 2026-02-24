@@ -1,13 +1,19 @@
 import random
 import os
 import json
-from python_files.enemy_ai.proof_of_concept.convert_dataset import DQN, get_action_from_model
+from python_files.enemy.util.model import deeplearning_model
 import torch
 global current_session_data
-current_session_data = {"steps":[]}
+current_session_data = {"enemies":{}}
 global enemy_model
-model = DQN(state_size=8, action_size=9)
+model = deeplearning_model(state_size=8, action_size=9)
 enemy_model = model.load_state_dict(torch.load(os.path.join(os.getcwd().split("python_files")[0], "assets", "models", "model.pt")))
+
+from python_files.enemy.melee_enemy.melee_enemy import MeleeEnemy
+enemy_classes = {"melee":MeleeEnemy}
+
+
+
 
 def load_training_data(path=os.path.join(os.getcwd().split("python_files")[0], "assets", "training_data", "poc_data.json")):
     with open(path, "r") as f:
@@ -17,7 +23,8 @@ def random_policy():
 def model_policy(step):
     global model
     state = [val for val in step.values()][:-1]
-    action = get_action_from_model(state, model)
+    model = deeplearning_model(state_size=8, action_size=9)
+    action = model.get_action_from_model(state)
     action_map = {
         (-1, 0): 0,
         (1, 0): 1,
@@ -60,6 +67,7 @@ def get_data_sample(enemy_position, player_position, player_vector, enemy_vector
         "player_vel_y": player_vector[1],
         "action":action
     }
+    print(step)
     return step
 
 
@@ -68,22 +76,39 @@ def convert_godot_tuple_to_python_list(tuple):
     return tuple
 async def poc_enemy_movement(args):
     global current_session_data
+    # get enemy object
+    level = args.get("level_name", "dev")
+    enemy_type = args.get("type", "melee")
+    enemy_number = args.get("number", str(0))
+    enemy_name = f"{enemy_type}_{level}_{enemy_number}"
+    if enemy_name in current_session_data["enemies"]:
+        enemy_object = current_session_data["enemies"][enemy_name]
+    else:
+        enemy_object = enemy_classes[enemy_type](level=level,type=enemy_type)
+
+
+
     observations = args.get("observation", [])
+    previous_reward = args.get("previous_reward", None)
+
     enemy_position = convert_godot_tuple_to_python_list(observations.get("global_position", ""))
     player_position = convert_godot_tuple_to_python_list(observations.get("player_relative", ""))
     player_vector = convert_godot_tuple_to_python_list(observations.get("player_vector", ""))
     enemy_vector = convert_godot_tuple_to_python_list(observations.get("enemy_vector", ""))
-    previous_reward = args.get("previous_reward", None)
+
     return_value = random_policy()
     input_x = return_value.get("x", 0)
     input_y = return_value.get("y", 0)
     step = get_data_sample(enemy_position, player_position, player_vector, enemy_vector, input_x, input_y)
+
+    """
     if previous_reward and len(current_session_data["steps"]) > 0:
         current_session_data["steps"][-1]["reward"] = previous_reward
     current_session_data["steps"].append(step)
-
     if len(current_session_data["steps"]) <3:
         print(current_session_data["steps"])
+        """
+
     return model_policy(step)
 async def close_session(args):
     print("close_session")
