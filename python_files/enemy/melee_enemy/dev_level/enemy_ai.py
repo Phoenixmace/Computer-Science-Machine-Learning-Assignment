@@ -23,6 +23,7 @@ def random_policy():
 def model_policy(step):
     global model
     state = [val for val in step.values()][:-1]
+    print(state, step)
     model = deeplearning_model(state_size=8, action_size=9)
     action = model.get_action_from_model(state)
     action_map = {
@@ -67,7 +68,6 @@ def get_data_sample(enemy_position, player_position, player_vector, enemy_vector
         "player_vel_y": player_vector[1],
         "action":action
     }
-    print(step)
     return step
 
 
@@ -84,37 +84,23 @@ async def poc_enemy_movement(args):
     if enemy_name in current_session_data["enemies"]:
         enemy_object = current_session_data["enemies"][enemy_name]
     else:
-        enemy_object = enemy_classes[enemy_type](level=level,type=enemy_type)
+        enemy_object = enemy_classes[enemy_type](level=level,type=enemy_type,number=enemy_number)
+        enemy_object_hash = enemy_object.get_object_hash()
+        current_session_data["enemies"][enemy_object_hash] = enemy_object
 
 
 
+    # Parse observations
     observations = args.get("observation", [])
     previous_reward = args.get("previous_reward", None)
 
-    enemy_position = convert_godot_tuple_to_python_list(observations.get("global_position", ""))
-    player_position = convert_godot_tuple_to_python_list(observations.get("player_relative", ""))
-    player_vector = convert_godot_tuple_to_python_list(observations.get("player_vector", ""))
-    enemy_vector = convert_godot_tuple_to_python_list(observations.get("enemy_vector", ""))
 
-    return_value = random_policy()
-    input_x = return_value.get("x", 0)
-    input_y = return_value.get("y", 0)
-    step = get_data_sample(enemy_position, player_position, player_vector, enemy_vector, input_x, input_y)
+    return_value = enemy_object.get_action_and_add_data_sample(observations, previous_reward)
 
-    """
-    if previous_reward and len(current_session_data["steps"]) > 0:
-        current_session_data["steps"][-1]["reward"] = previous_reward
-    current_session_data["steps"].append(step)
-    if len(current_session_data["steps"]) <3:
-        print(current_session_data["steps"])
-        """
-
-    return model_policy(step)
+    return return_value
 async def close_session(args):
     print("close_session")
     global current_session_data
-    training_data = load_training_data()
-    training_data[str(len(training_data)+1)] = current_session_data
-    json.dump(training_data, open(os.path.join(os.getcwd().split("python_files")[0], "assets","training_data", "poc_data.json"), "w"), indent=4)
-    current_session_data = {"steps": []}
-    return {"message": "Session closed successfully"}
+    for enemy in current_session_data["enemies"].values():
+        enemy.update_dataset_and_model()
+    return {"message": "Session closed"}
