@@ -30,10 +30,25 @@ class MeleeEnemy(BaseEnemy):
         player_position = convert_godot_tuple_to_python_list(observations.get("player_relative", ""))
         player_vector = convert_godot_tuple_to_python_list(observations.get("player_vector", ""))
         enemy_vector = convert_godot_tuple_to_python_list(observations.get("enemy_vector", ""))
-        if previous_reward and len(self.current_session_data["steps"]) > 0 and "reward" not in self.current_session_data["steps"][-1]:
-            self.current_session_data["steps"][-1]["reward"] = previous_reward
+
         self.current_step = self.create_new_data_step(enemy_position,player_position,player_vector,enemy_vector)
         return_action = self.model.get_action_from_model([value for value in self.current_step.values()])
+        if previous_reward and len(self.current_session_data["steps"]) > 0 and "reward" not in self.current_session_data["steps"][-1]:
+            if (hasattr(self, "previous_action") and self.previous_action==return_action) or return_action == 8:
+                distance = (abs(enemy_position[0] - player_position[0])**2 + abs(enemy_position[1]-player_position[1])**2)**0.5
+                previous_reward = previous_reward -(distance*0.1)
+                """
+                if previous_reward < 0:
+                    previous_reward = previous_reward * 2
+                    print("reward increased by 10", previous_reward)
+                else:
+                    previous_reward = previous_reward * 0.5
+            else:
+                if previous_reward >0:
+                    previous_reward = previous_reward * 2
+                print()"""
+            self.current_session_data["steps"][-1]["reward"] = previous_reward
+        self.previous_action = return_action
         self.add_action_to_data_step(return_action)
         action_map = {
             (-1, 0): 0,
