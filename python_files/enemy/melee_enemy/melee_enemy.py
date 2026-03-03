@@ -68,7 +68,6 @@ class MeleeEnemy(BaseEnemy):
 
             if "reward" not in s:
                 continue
-
             state_vec = [
                 s["enemy_pos_x"],
                 s["enemy_pos_y"],
@@ -113,5 +112,4 @@ class MeleeEnemy(BaseEnemy):
             data["rewards"] = rewards
             data["next_states"] = next_states
             json.dump(data, open(dataset_path, "w"))
-
         self.model.update_and_save_model(dataset_name)

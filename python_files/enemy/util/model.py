@@ -35,7 +35,7 @@ class deeplearning_model(nn.Module):
         if not file_name:
             file_name = f"{enemy_type}_{level}_{number}_s{self.states}_a{self.actions}.pt"
         else:
-            file_name = f"{file_name}_s{self.states}_a{self.actions}.pt"
+            file_name = f"{file_name.replace('.json', '')}.pt"
         path = os.path.join(os.getcwd().split("python_files")[0], "assets", "models", file_name)
 
         torch.save(self.state_dict(), path)
@@ -44,7 +44,7 @@ class deeplearning_model(nn.Module):
         if not file_name:
             file_name = f"{enemy_type}_{level}_{number}_s{self.states}_a{self.actions}.pt"
         else:
-            file_name = f"{file_name}_s{self.states}_a{self.actions}.pt"
+            file_name = f"{file_name.replace('.json', '')}.pt"
         path = os.path.join(os.getcwd().split("python_files")[0], "assets", "models", file_name)
         self.load_state_dict(torch.load(path))
         self.eval()
