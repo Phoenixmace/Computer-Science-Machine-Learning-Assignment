@@ -51,22 +51,17 @@ class deeplearning_model(nn.Module):
         print("Model loaded.")
     def update_and_save_model(self, dataset_name="dev_level"):
         dataset_path = os.path.join(os.getcwd().split("python_files")[0], "assets", "training_data", f"{dataset_name}")
-        print(os.path.exists(dataset_path))
-        print(dataset_name)
-        print(dataset_path)
+
         with open(dataset_path) as f:
             data = json.load(f)
-
         states = data.get("states", [])
         actions = data.get("actions", [])
         rewards = data.get("rewards", [])
         next_states = data.get("next_states", [])
-
         states = torch.tensor(states, dtype=torch.float32)
         next_states = torch.tensor(next_states, dtype=torch.float32)
         actions = torch.tensor(actions, dtype=torch.long)
         rewards = torch.tensor(rewards, dtype=torch.float32)
-
         optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
         criterion = nn.MSELoss()
         gamma = 0.99

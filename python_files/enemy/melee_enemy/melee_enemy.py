@@ -23,14 +23,15 @@ class MeleeEnemy(BaseEnemy):
         return step
     def add_action_to_data_step(self, action):
         self.current_step["action"] = action
+        self.current_session_data["steps"].append(self.current_step)
     def get_action_and_add_data_sample(self, observations, previous_reward=None):
         # Parse observations
         enemy_position = convert_godot_tuple_to_python_list(observations.get("global_position", ""))
         player_position = convert_godot_tuple_to_python_list(observations.get("player_relative", ""))
         player_vector = convert_godot_tuple_to_python_list(observations.get("player_vector", ""))
         enemy_vector = convert_godot_tuple_to_python_list(observations.get("enemy_vector", ""))
-        if previous_reward and len(self.current_session_data["steps"]) > 0 and "previous_reward" not in self.current_session_data["steps"][-1]:
-            self.current_session_data["steps"][-1]["previous_reward"] = previous_reward
+        if previous_reward and len(self.current_session_data["steps"]) > 0 and "reward" not in self.current_session_data["steps"][-1]:
+            self.current_session_data["steps"][-1]["reward"] = previous_reward
         self.current_step = self.create_new_data_step(enemy_position,player_position,player_vector,enemy_vector)
         return_action = self.model.get_action_from_model([value for value in self.current_step.values()])
         self.add_action_to_data_step(return_action)
@@ -60,8 +61,8 @@ class MeleeEnemy(BaseEnemy):
         actions = []
         rewards = []
         next_states = []
-
         for i in range(len(unformatted_data) - 4):
+
             s = unformatted_data[i + 1]
             s_next = unformatted_data[i + 2]
 
@@ -78,7 +79,6 @@ class MeleeEnemy(BaseEnemy):
                 s["player_vel_x"],
                 s["player_vel_y"]
             ]
-
             next_state_vec = [
                 s_next["enemy_pos_x"],
                 s_next["enemy_pos_y"],
@@ -101,10 +101,10 @@ class MeleeEnemy(BaseEnemy):
         if os.path.exists(dataset_path):
             with open(dataset_path, "r") as f:
                 data = json.load(f)
-                data["states"].append(states)
-                data["actions"].append(actions)
-                data["rewards"].append(rewards)
-                data["next_states"].append(next_states)
+                data["states"]+=states
+                data["actions"]+=actions
+                data["rewards"]+= rewards
+                data["next_states"]+= next_states
                 json.dump(data, open(dataset_path, "w"))
         else:
             data = {}
@@ -113,6 +113,5 @@ class MeleeEnemy(BaseEnemy):
             data["rewards"] = rewards
             data["next_states"] = next_states
             json.dump(data, open(dataset_path, "w"))
-        print(os.path.exists(dataset_path))
-        print(dataset_path)
+
         self.model.update_and_save_model(dataset_name)
