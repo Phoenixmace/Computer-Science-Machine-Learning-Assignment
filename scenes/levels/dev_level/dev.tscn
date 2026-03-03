@@ -4,5 +4,8 @@
 
 [node name="BaseLevel" unique_id=290879843 instance=ExtResource("1_bh67p")]
 
+[node name="Player" parent="." index="0" unique_id=222767062]
+position = Vector2(1600, 174)
+
 [node name="Game" parent="." index="5" unique_id=1675744531 node_paths=PackedStringArray("python_controller")]
 python_controller = NodePath("../PythonController")

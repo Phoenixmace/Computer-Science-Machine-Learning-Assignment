@@ -6,7 +6,7 @@ extends Node2D
 @export var max_enemies := 10
 
 var current_enemies: Array = []
-var spawn_timer := 100.0
+var spawn_timer := 300.0
 
 func _ready() -> void:
 	pass

@@ -11,7 +11,7 @@
 [node name="BaseLevel" type="Node2D" unique_id=290879843]
 
 [node name="Player" parent="." unique_id=222767062 instance=ExtResource("1_rwgnx")]
-position = Vector2(209, 162)
+position = Vector2(1190, 1053)
 scale = Vector2(0.3, 0.3)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2037935068]
@@ -26,7 +26,10 @@ script = ExtResource("3_fqjk7")
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=2046301675 node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("4_y3fao")
 enemy_scene = ExtResource("5_1txf7")
-spawn_points = [NodePath("../Player")]
+spawn_points = [NodePath("SpawnPoint")]
+
+[node name="SpawnPoint" type="Node2D" parent="EnemySpawner" unique_id=639780213]
+position = Vector2(100, 500)
 
 [node name="PythonController" type="Node2D" parent="." unique_id=173451401]
 script = ExtResource("6_1txf7")
