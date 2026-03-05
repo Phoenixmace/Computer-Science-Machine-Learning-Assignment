@@ -8,6 +8,9 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 
 @onready var movement_vector := Vector2.ZERO
 
+func _ready() -> void:
+	add_to_group("Player")
+
 func _physics_process(delta: float) -> void:
 	movement_vector = get_new_movement_vector(movement_vector,delta)
 	global_position = global_position + movement_vector
@@ -58,7 +61,6 @@ func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
 		if collision.get_normal().y == 0:
 			collision_vector.y = 1
 		current_vector *= collision_vector
-		print(i)
 #region cap speed
 	# snap vector to max length
 	if current_vector.length() > MAX_SPEED:
@@ -66,3 +68,7 @@ func get_new_movement_vector(current_vector: Vector2, delta: float) -> Vector2:
 #endregion
 	
 	return current_vector
+
+
+func recieve_damage(number):
+	print(number)

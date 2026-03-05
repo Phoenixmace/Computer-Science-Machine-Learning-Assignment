@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7135dcf-61dd-4b9b-9ff5-88172870481c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/models/dik.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/models/melee_BaseLevel_0_s8_a9.pt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/models/melee_BaseLevel_0_s8_a9.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/training_data/melee_BaseLevel_0_s8_a9.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/training_data/melee_BaseLevel_0_s8_a9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/enemies/base_melee.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/enemies/base_melee.gd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/player/player.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/player/player.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addons/godot-git-plugin/win64/~libgit_plugin.windows.editor.x86_64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_time.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_time.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +148,7 @@
       <workItem from="1772179226648" duration="8996000" />
       <workItem from="1772443708209" duration="12000" />
       <workItem from="1772539819676" duration="2671000" />
-      <workItem from="1772547893555" duration="3893000" />
+      <workItem from="1772547893555" duration="4542000" />
     </task>
     <servers />
   </component>

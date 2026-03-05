@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var speed := 150
 @export var max_health := 3
 
@@ -8,14 +9,18 @@ var health := max_health
 @export var DECELERATION_FACTOR := 0.3
 var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 @export var MAX_SPEED := 30
+@export var DAMAGE := 10
 
 var python_request_interval = 0.1
 var current_request_cooldown = 0.0
+
 
 @onready var movement_vector := Vector2.ZERO
 @onready var controller = get_node("../PythonController")
 @onready var game = get_node("../Game")
 var previous_distance = 0.0
+
+
 
 func _physics_process(delta: float) -> void:
 	current_request_cooldown -= delta
@@ -68,12 +73,10 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 #endregion
 
 	move_and_slide()
-	for i in get_slide_collision_count():
+
+	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		print(collider.name)
-		if collider.name != "TileMapLayer":
-			game.end_game()
 		var collision_vector =   Vector2(-0.8, -0.8)
 		if collision.get_normal().x == 0:
 			collision_vector.x = 1
@@ -114,3 +117,9 @@ func get_current_game_state_for_python(movement_vector):
 	"number":"0"}
 	
 	return data
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if body.is_in_group("Player"):
+		body.recieve_damage(DAMAGE) # Replace with function body.

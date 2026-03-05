@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfjak"]
 radius = 127.39309
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kuee"]
+radius = 139.35925
+
 [node name="Player" type="CharacterBody2D" unique_id=1714357750]
 script = ExtResource("1_gfjak")
 DECELERATION_FACTOR = 0.5
@@ -17,3 +20,8 @@ metadata/_edit_group_ = true
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=456316821]
 texture = ExtResource("1_wr5hl")
 metadata/_edit_group_ = true
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=250088298]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1813198745]
+shape = SubResource("CircleShape2D_4kuee")
