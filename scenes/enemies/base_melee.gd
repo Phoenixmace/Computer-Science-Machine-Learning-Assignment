@@ -28,10 +28,13 @@ func _physics_process(delta: float) -> void:
 		current_request_cooldown = python_request_interval
 		var data = get_current_game_state_for_python(movement_vector) # data is a String
 		var recieved_vector = controller.send_request("enemy_movement", data)
+		#recieved_vector = Vector2(int(Input.is_action_pressed("D"))-int(Input.is_action_pressed("A")), int(Input.is_action_pressed("W")) - int(Input.is_action_pressed("S")))
 		if recieved_vector:
 			var dict = str_to_var(recieved_vector)     # dict is a Dictionary
 			recieved_vector = str_to_var(recieved_vector)
 			movement_vector = get_new_movement_vector(movement_vector,delta, Vector2(int(recieved_vector["x"]), int(recieved_vector["y"])))
+	else:
+		move_and_slide()
 	global_position = global_position + movement_vector
 
 	pass
@@ -73,7 +76,6 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 #endregion
 
 	move_and_slide()
-
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -83,6 +85,7 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 		if collision.get_normal().y == 0:
 			collision_vector.y = 1
 		current_vector *= collision_vector
+
 		
 #region cap speed
 	# snap vector to max length

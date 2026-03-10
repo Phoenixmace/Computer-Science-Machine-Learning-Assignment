@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b2bkux83do47e" path="res://assets/sprites/enemies/melee/Enemy.png" id="1_wbdyy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7u171"]
-radius = 106.01887
+radius = 132.13629
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7u171"]
-radius = 168.0
-height = 336.0
+radius = 120.0
+height = 264.0
 
 [node name="BaseMelee" type="CharacterBody2D" unique_id=1365733535]
 scale = Vector2(0.5, 0.5)
@@ -26,5 +26,6 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1432914026]
 shape = SubResource("CapsuleShape2D_7u171")
+disabled = true
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
