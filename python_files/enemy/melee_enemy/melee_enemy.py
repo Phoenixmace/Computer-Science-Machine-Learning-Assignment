@@ -37,17 +37,11 @@ class MeleeEnemy(BaseEnemy):
             if (hasattr(self, "previous_action") and self.previous_action==return_action) or return_action == 8:
                 distance = (abs(enemy_position[0] - player_position[0])**2 + abs(enemy_position[1]-player_position[1])**2)**0.5
                 previous_reward = previous_reward -(distance*0.1)
-                """
-                if previous_reward < 0:
-                    previous_reward = previous_reward * 2
-                    print("reward increased by 10", previous_reward)
-                else:
-                    previous_reward = previous_reward * 0.5
-            else:
-                if previous_reward >0:
-                    previous_reward = previous_reward * 2
-                print()"""
             self.current_session_data["steps"][-1]["reward"] = previous_reward
+            for i in range(3):
+                if len(self.current_session_data["steps"]) > i+1 and "reward" in self.current_session_data["steps"][-(i+2)]:
+                    #print(self.current_session_data["steps"][-(i + 2)]["reward"], "to", previous_reward* (1/(2**i)))
+                    self.current_session_data["steps"][-(i+2)]["reward"] += previous_reward* (1/(2**i))
         self.previous_action = return_action
         self.add_action_to_data_step(return_action)
         action_map = {

@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b2bkux83do47e" path="res://assets/sprites/enemies/melee/Enemy.png" id="1_wbdyy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7u171"]
-radius = 132.13629
+radius = 116.01724
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7u171"]
-radius = 120.0
-height = 264.0
+radius = 126.0
+height = 260.0
 
 [node name="BaseMelee" type="CharacterBody2D" unique_id=1365733535]
 scale = Vector2(0.5, 0.5)
