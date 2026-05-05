@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bqtjci17es3st"]
 
 [ext_resource type="Script" uid="uid://daoay37cnyb3e" path="res://scenes/enemies/base_melee.gd" id="1_7u171"]
-[ext_resource type="Texture2D" uid="uid://b2bkux83do47e" path="res://assets/sprites/enemies/melee/Enemy.png" id="1_wbdyy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7u171"]
 radius = 116.01724
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wbdyy"]
+load_path = "res://.godot/imported/EnemyOld.png-6dcf00a39ca30beefa71f65771bd5794.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7u171"]
 radius = 126.0
@@ -19,7 +21,7 @@ shape = SubResource("CircleShape2D_7u171")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209070272]
-texture = ExtResource("1_wbdyy")
+texture = SubResource("CompressedTexture2D_wbdyy")
 metadata/_edit_group_ = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1275666376]
