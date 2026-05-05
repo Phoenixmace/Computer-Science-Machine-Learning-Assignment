@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d1l5qavdxcqkb"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://assets/sprites/icon.svg" id="1_3udug"]
 [ext_resource type="Script" uid="uid://dyu2krfkfssep" path="res://scenes/game/ui.gd" id="1_5gpb8"]
-[ext_resource type="Texture2D" uid="uid://daq22h8rbxjr8" path="res://assets/game/56d3c455-364d-4e89-be8e-aad0be0715ea.jpg" id="2_h2d8c"]
+[ext_resource type="Texture2D" uid="uid://c075o1sgyip48" path="res://assets/game/Health Bar Inner.png" id="2_5gpb8"]
+[ext_resource type="Texture2D" uid="uid://bm6axlptcsffv" path="res://assets/game/Health Bar 2.png" id="2_h2d8c"]
 
 [node name="Node2D" type="MarginContainer" unique_id=1067152854 node_paths=PackedStringArray("hp_bar")]
 anchors_preset = 15
@@ -11,10 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5gpb8")
-hp_bar = NodePath("VBoxContainer/Count/HPBar")
+hp_bar = NodePath("VBoxContainer/Count/Background/AspectRatioContainer/HPBar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=546452154]
-custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="Count" type="MarginContainer" parent="VBoxContainer" unique_id=1459391329]
@@ -24,26 +23,38 @@ size_flags_vertical = 3
 [node name="Background" type="NinePatchRect" parent="VBoxContainer/Count" unique_id=363273573]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Count/Background" unique_id=1829181494]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/Count/Background" unique_id=1069192289]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 0
-offset_top = 52.0
-offset_right = 128.0
-offset_bottom = 75.0
-text = "HP"
+offset_right = 141.58398
+offset_bottom = 60.107998
+ratio = 0.9571
+stretch_mode = 0
+alignment_horizontal = 0
+alignment_vertical = 0
+
+[node name="HPBar" type="TextureProgressBar" parent="VBoxContainer/Count/Background/AspectRatioContainer" unique_id=1534805868]
+layout_mode = 2
+value = 9.0
+rounded = true
+texture_over = ExtResource("2_h2d8c")
+texture_progress = ExtResource("2_5gpb8")
+metadata/_edit_group_ = true
 
 [node name="Title" type="TextureRect" parent="VBoxContainer/Count/Background" unique_id=918544623]
 layout_mode = 0
-offset_right = 454.0
-offset_bottom = 38.0
+offset_left = 3.0517578e-05
+offset_top = 223.02835
+offset_right = 1024.0
+offset_bottom = 800.9717
 
-[node name="HPBar" type="TextureProgressBar" parent="VBoxContainer/Count" unique_id=1534805868]
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-value = 50.0
-rounded = true
-allow_lesser = true
-texture_over = ExtResource("2_h2d8c")
-texture_progress = ExtResource("1_3udug")
+[node name="Label" type="Label" parent="VBoxContainer/Count/Background" unique_id=1829181494]
+layout_mode = 0
+offset_left = 3.0517578e-05
+offset_top = 500.02835
+offset_right = 1024.0
+offset_bottom = 523.0283
+text = "HP"
 
 [node name="Control" type="Control" parent="VBoxContainer" unique_id=1509448887]
 layout_mode = 2

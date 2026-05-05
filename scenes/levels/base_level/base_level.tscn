@@ -38,7 +38,7 @@ script = ExtResource("6_1txf7")
 
 [node name="Game" type="Node2D" parent="." unique_id=1675744531 node_paths=PackedStringArray("python_controller")]
 script = ExtResource("7_ou3as")
-python_controller = NodePath(".")
+python_controller = NodePath("../PythonController")
 
 [node name="Node2D" parent="Game" unique_id=1067152854 node_paths=PackedStringArray("game") instance=ExtResource("1_wawn3")]
 offset_right = 128.0

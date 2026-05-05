@@ -8,3 +8,4 @@ func _on_exit_game_pressed() -> void:
 func update_player_life(current, total) -> void:
 	hp_bar.max_value = total
 	hp_bar.value = current
+	print(hp_bar.value)
