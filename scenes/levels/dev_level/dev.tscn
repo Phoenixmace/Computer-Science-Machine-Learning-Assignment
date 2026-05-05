@@ -9,3 +9,6 @@ position = Vector2(1600, 174)
 
 [node name="Game" parent="." index="5" unique_id=1675744531 node_paths=PackedStringArray("python_controller")]
 python_controller = NodePath("../PythonController")
+
+[node name="Node2D" parent="Game" index="0" unique_id=1067152854 node_paths=PackedStringArray("game")]
+game = NodePath("..")

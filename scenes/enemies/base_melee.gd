@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		current_request_cooldown = python_request_interval
 		var data = get_current_game_state_for_python(movement_vector) # data is a String
 		var recieved_vector = controller.send_request("enemy_movement", data)
+		print(recieved_vector)
 		#recieved_vector = Vector2(int(Input.is_action_pressed("D"))-int(Input.is_action_pressed("A")), int(Input.is_action_pressed("W")) - int(Input.is_action_pressed("S")))
 		if recieved_vector:
 			var dict = str_to_var(recieved_vector)     # dict is a Dictionary

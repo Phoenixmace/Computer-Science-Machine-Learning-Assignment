@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://d1l5qavdxcqkb"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://assets/sprites/icon.svg" id="1_3udug"]
+[ext_resource type="Script" uid="uid://dyu2krfkfssep" path="res://scenes/game/ui.gd" id="1_5gpb8"]
+
+[node name="Node2D" type="MarginContainer" unique_id=1067152854 node_paths=PackedStringArray("hp_bar")]
+script = ExtResource("1_5gpb8")
+hp_bar = NodePath("VBoxContainer/Count/HPBar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=546452154]
+layout_mode = 2
+
+[node name="Count" type="MarginContainer" parent="VBoxContainer" unique_id=1459391329]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="VBoxContainer/Count" unique_id=363273573]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Count/Background" unique_id=1829181494]
+layout_mode = 0
+offset_top = 52.0
+offset_right = 128.0
+offset_bottom = 75.0
+text = "HP"
+
+[node name="Title" type="TextureRect" parent="VBoxContainer/Count/Background" unique_id=918544623]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="HPBar" type="TextureProgressBar" parent="VBoxContainer/Count" unique_id=1534805868]
+layout_mode = 2
+texture_progress = ExtResource("1_3udug")
+
+[node name="Exit" type="CanvasLayer" parent="." unique_id=887757396]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="Exit" unique_id=1509448887]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 204.0
+offset_bottom = 196.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Exit/Control" unique_id=855329820]
+layout_mode = 0
+offset_right = 433.0
+offset_bottom = 199.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Exit/Control/Panel" unique_id=287716173]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 24.0
+offset_bottom = 13.0
+mouse_filter = 2
+
+[node name="Exit_Game" type="Button" parent="Exit/Control/Panel/VBoxContainer" unique_id=1553640282]
+visibility_layer = 2
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Exit "
+
+[connection signal="pressed" from="Exit/Control/Panel/VBoxContainer/Exit_Game" to="." method="_on_exit_game_pressed"]

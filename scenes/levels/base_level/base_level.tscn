@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ydc0lt4e3r4x"]
 
 [ext_resource type="PackedScene" uid="uid://dov6yw10d5ruw" path="res://scenes/player/Player.tscn" id="1_rwgnx"]
+[ext_resource type="PackedScene" uid="uid://d1l5qavdxcqkb" path="res://scenes/game/UI.tscn" id="1_wawn3"]
 [ext_resource type="TileSet" uid="uid://dfbbkufop1wpu" path="res://assets/tilesets/tileset.tres" id="2_0jlsv"]
 [ext_resource type="Script" uid="uid://d18w0mgpt8aqn" path="res://scripts/components/camera/level_camera.gd" id="3_fqjk7"]
 [ext_resource type="Script" uid="uid://ckkunffc4wglr" path="res://scripts/managers/enemies/enemy_spawner/enemy_spawner.gd" id="4_y3fao"]
@@ -10,9 +11,10 @@
 
 [node name="BaseLevel" type="Node2D" unique_id=290879843]
 
-[node name="Player" parent="." unique_id=222767062 instance=ExtResource("1_rwgnx")]
+[node name="Player" parent="." unique_id=222767062 node_paths=PackedStringArray("ui") instance=ExtResource("1_rwgnx")]
 position = Vector2(1190, 1053)
 scale = Vector2(0.3, 0.3)
+ui = NodePath("../Game/Node2D")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2037935068]
 scale = Vector2(2, 2)
@@ -34,38 +36,11 @@ position = Vector2(100, 500)
 [node name="PythonController" type="Node2D" parent="." unique_id=173451401]
 script = ExtResource("6_1txf7")
 
-[node name="Game" type="Node2D" parent="." unique_id=1675744531]
+[node name="Game" type="Node2D" parent="." unique_id=1675744531 node_paths=PackedStringArray("python_controller")]
 script = ExtResource("7_ou3as")
+python_controller = NodePath(".")
 
-[node name="UI2" type="CanvasLayer" parent="." unique_id=843365407]
-follow_viewport_enabled = true
-
-[node name="Control" type="Control" parent="UI2" unique_id=1064699394]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 204.0
-offset_bottom = 196.0
-mouse_filter = 2
-
-[node name="Panel" type="Panel" parent="UI2/Control" unique_id=1171886822]
-layout_mode = 0
-offset_right = 433.0
-offset_bottom = 199.0
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI2/Control/Panel" unique_id=1973447579]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 24.0
-offset_bottom = 13.0
-mouse_filter = 2
-
-[node name="Exit_Game" type="Button" parent="UI2/Control/Panel/VBoxContainer" unique_id=1399709604]
-visibility_layer = 2
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-text = "Exit Gamedasfdafdasfdasfdsaf"
-
-[connection signal="pressed" from="UI2/Control/Panel/VBoxContainer/Exit_Game" to="Game" method="end_game"]
+[node name="Node2D" parent="Game" unique_id=1067152854 node_paths=PackedStringArray("game") instance=ExtResource("1_wawn3")]
+offset_right = 128.0
+offset_bottom = 128.0
+game = NodePath("..")
