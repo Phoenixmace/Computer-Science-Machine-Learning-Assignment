@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7135dcf-61dd-4b9b-9ff5-88172870481c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/models/melee_BaseLevel_0_s8_a9.pt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/models/melee_BaseLevel_0_s8_a9.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/training_data/melee_BaseLevel_0_s8_a9.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/training_data/melee_BaseLevel_0_s8_a9.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/game/UI.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/game/UI.tscn" afterDir="false" />
-    </list>
+    <list default="true" id="f7135dcf-61dd-4b9b-9ff5-88172870481c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +151,7 @@
       <workItem from="1777376128283" duration="196000" />
       <workItem from="1777883635387" duration="354000" />
       <workItem from="1777885628220" duration="4000" />
-      <workItem from="1777969920794" duration="5335000" />
+      <workItem from="1777969920794" duration="5640000" />
     </task>
     <servers />
   </component>
