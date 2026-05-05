@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed := 150
 @export var max_health := 3
+@export var hit_cooldown := 0.2
 
 var health := max_health
 @export var ACCELERATION := 3
@@ -13,6 +14,7 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 
 var python_request_interval = 0.1
 var current_request_cooldown = 0.0
+var current_hit_cooldown = 0
 
 
 @onready var movement_vector := Vector2.ZERO
@@ -24,6 +26,8 @@ var previous_distance = 0.0
 
 func _physics_process(delta: float) -> void:
 	current_request_cooldown -= delta
+	if current_hit_cooldown > 0:
+		current_hit_cooldown -= delta
 	if current_request_cooldown <=0:
 		current_request_cooldown = python_request_interval
 		var data = get_current_game_state_for_python(movement_vector) # data is a String
@@ -79,6 +83,9 @@ func get_new_movement_vector(current_vector: Vector2, delta: float, recieved_vec
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
+		if collider.name == "Player" and current_hit_cooldown < 0.01:
+			_hit_player(collider)
+			current_hit_cooldown = hit_cooldown
 		var collision_vector =   Vector2(-0.8, -0.8)
 		if collision.get_normal().x == 0:
 			collision_vector.x = 1
@@ -122,7 +129,5 @@ func get_current_game_state_for_python(movement_vector):
 	return data
 
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	print(body.name)
-	if body.is_in_group("Player"):
-		body.recieve_damage(DAMAGE) # Replace with function body.
+func _hit_player(player) -> void:
+	player.recieve_damage(DAMAGE) # Replace with function body.
