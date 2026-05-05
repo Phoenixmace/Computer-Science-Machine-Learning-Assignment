@@ -19,6 +19,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	ui.update_player_life(curr_hp, max_hp)
+	if curr_hp <= 0:
+		ui._on_exit_game_pressed()
 	movement_vector = get_new_movement_vector(movement_vector,delta)
 	global_position = global_position + movement_vector
 
