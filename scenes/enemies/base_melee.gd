@@ -14,7 +14,7 @@ var DECELERATION := ACCELERATION * DECELERATION_FACTOR
 
 var python_request_interval = 0.1
 var current_request_cooldown = 0.0
-var current_hit_cooldown = 0
+var current_hit_cooldown = 0.0
 
 
 @onready var movement_vector := Vector2.ZERO
