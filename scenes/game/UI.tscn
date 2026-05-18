@@ -9,8 +9,10 @@ script = ExtResource("1_5gpb8")
 hp_bar = NodePath("VBoxContainer/Count/Background/AspectRatioContainer/HPBar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=546452154]
-offset_right = 1152.0
-offset_bottom = 100.0
+offset_left = 233.0
+offset_top = -102.0
+offset_right = 763.0
+offset_bottom = -102.0
 
 [node name="Count" type="MarginContainer" parent="VBoxContainer" unique_id=1459391329]
 layout_mode = 2
@@ -57,7 +59,7 @@ text = "HP"
 
 [node name="Control" type="MarginContainer" parent="." unique_id=23055086]
 layout_direction = 2
-offset_right = 1152.0
+offset_right = 190.0
 offset_bottom = 100.0
 mouse_filter = 2
 
