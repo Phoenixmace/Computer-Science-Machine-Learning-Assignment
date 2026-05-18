@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7135dcf-61dd-4b9b-9ff5-88172870481c" name="Changes" comment="" />
+    <list default="true" id="f7135dcf-61dd-4b9b-9ff5-88172870481c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/addons/godot-git-plugin/win64/~libgit_plugin.windows.editor.x86_64.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_time.json" beforeDir="false" afterPath="$PROJECT_DIR$/project_time.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +154,7 @@
       <workItem from="1777376128283" duration="196000" />
       <workItem from="1777883635387" duration="354000" />
       <workItem from="1777885628220" duration="4000" />
-      <workItem from="1777969920794" duration="5640000" />
+      <workItem from="1777969920794" duration="6395000" />
     </task>
     <servers />
   </component>

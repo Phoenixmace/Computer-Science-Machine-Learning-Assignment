@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c075o1sgyip48" path="res://assets/game/Health Bar Inner.png" id="2_5gpb8"]
 [ext_resource type="Texture2D" uid="uid://bm6axlptcsffv" path="res://assets/game/Health Bar 2.png" id="2_h2d8c"]
 
-[node name="Node2D" type="MarginContainer" unique_id=1067152854 node_paths=PackedStringArray("hp_bar")]
+[node name="UI" type="MarginContainer" unique_id=1067152854 node_paths=PackedStringArray("hp_bar")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,8 +35,8 @@ alignment_vertical = 0
 
 [node name="HPBar" type="TextureProgressBar" parent="VBoxContainer/Count/Background/AspectRatioContainer" unique_id=1534805868]
 layout_mode = 2
-value = 9.0
 rounded = true
+nine_patch_stretch = true
 texture_over = ExtResource("2_h2d8c")
 texture_progress = ExtResource("2_5gpb8")
 metadata/_edit_group_ = true
