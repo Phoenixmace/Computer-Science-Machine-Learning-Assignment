@@ -35,6 +35,8 @@ alignment_vertical = 0
 
 [node name="HPBar" type="TextureProgressBar" parent="VBoxContainer/Count/Background/AspectRatioContainer" unique_id=1534805868]
 layout_mode = 2
+max_value = 140.0
+value = 1.0
 rounded = true
 nine_patch_stretch = true
 texture_over = ExtResource("2_h2d8c")
@@ -42,6 +44,7 @@ texture_progress = ExtResource("2_5gpb8")
 metadata/_edit_group_ = true
 
 [node name="Title" type="TextureRect" parent="VBoxContainer/Count/Background" unique_id=918544623]
+visible = false
 layout_mode = 0
 offset_left = 3.0517578e-05
 offset_top = 223.02835
@@ -49,6 +52,7 @@ offset_right = 1024.0
 offset_bottom = 800.9717
 
 [node name="Label" type="Label" parent="VBoxContainer/Count/Background" unique_id=1829181494]
+visible = false
 layout_mode = 0
 offset_left = 3.0517578e-05
 offset_top = 500.02835
@@ -60,25 +64,18 @@ text = "HP"
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer/Control" unique_id=855329820]
-layout_mode = 0
-offset_right = 433.0
-offset_bottom = 199.0
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/Panel" unique_id=287716173]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control" unique_id=287716173]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 24.0
-offset_bottom = 13.0
+anchor_right = 0.72300005
+offset_right = -477.89606
+offset_bottom = 100.0
 mouse_filter = 2
 
-[node name="Exit_Game" type="Button" parent="VBoxContainer/Control/Panel/VBoxContainer" unique_id=1553640282]
+[node name="Exit_Game" type="Button" parent="VBoxContainer/Control/VBoxContainer" unique_id=1553640282]
 visibility_layer = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Exit Game"
 
-[connection signal="pressed" from="VBoxContainer/Control/Panel/VBoxContainer/Exit_Game" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/VBoxContainer/Exit_Game" to="." method="_on_exit_game_pressed"]

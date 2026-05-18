@@ -8,5 +8,5 @@ func _on_exit_game_pressed() -> void:
 func update_player_life(current, total) -> void:
 	if current != total:
 		print(total, current, hp_bar.value)
-	hp_bar.max_value = total
+	hp_bar.max_value = 140
 	hp_bar.value = current
