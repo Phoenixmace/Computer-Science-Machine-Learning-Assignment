@@ -15,6 +15,7 @@ DECELERATION_FACTOR = 0.5
 
 [node name="WallCollision" type="CollisionShape2D" parent="." unique_id=851979352]
 shape = SubResource("CircleShape2D_gfjak")
+disabled = true
 metadata/_edit_group_ = true
 
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=456316821]
@@ -27,3 +28,4 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1813198745]
 shape = SubResource("CircleShape2D_4kuee")
+disabled = true

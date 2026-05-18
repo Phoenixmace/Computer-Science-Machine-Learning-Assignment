@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var ui:MarginContainer
-@export var max_hp = 100.0
-@onready var curr_hp = 1
+@export var ui:Node2D
+@export var max_hp := 100.0
+@onready var curr_hp := 100.0
 
 @export var ACCELERATION := 2
 @export var DECELERATION_FACTOR := 0.3
@@ -18,11 +18,12 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	ui.update_player_life(curr_hp, max_hp)
 	if curr_hp <= 0:
 		ui._on_exit_game_pressed()
 	movement_vector = get_new_movement_vector(movement_vector,delta)
 	global_position = global_position + movement_vector
+	ui.update_player_life(curr_hp, max_hp)
+
 
 	pass
 

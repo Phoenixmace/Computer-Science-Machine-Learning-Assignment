@@ -7,7 +7,6 @@ var initiated_session := false
 var action := {}
 func _ready() -> void:
 	peer.connect_to_url(server_url)
-	print("hey")
 
 func _process(delta):
 	peer.poll()  # must call this every frame

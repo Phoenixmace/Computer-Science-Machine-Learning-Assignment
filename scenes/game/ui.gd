@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Node2D
 
 @export var game:Node2D
 @export var hp_bar:TextureProgressBar
@@ -7,6 +7,6 @@ func _on_exit_game_pressed() -> void:
 	pass # Replace with function body.
 func update_player_life(current, total) -> void:
 	if current != total:
-		print(total, current, hp_bar.value)
-	hp_bar.max_value = 140
+		pass
+	hp_bar.max_value = total
 	hp_bar.value = current

@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://daoay37cnyb3e" path="res://scenes/enemies/base_melee.gd" id="1_7u171"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7u171"]
-radius = 116.01724
+radius = 115.22
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wbdyy"]
 load_path = "res://.godot/imported/EnemyOld.png-6dcf00a39ca30beefa71f65771bd5794.ctex"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7u171"]
-radius = 144.0
-height = 288.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_wbdyy"]
+radius = 132.01515
 
 [node name="BaseMelee" type="CharacterBody2D" unique_id=1365733535]
 scale = Vector2(0.5, 0.5)
@@ -18,6 +17,7 @@ script = ExtResource("1_7u171")
 
 [node name="WallCollision" type="CollisionShape2D" parent="." unique_id=1713408707]
 shape = SubResource("CircleShape2D_7u171")
+one_way_collision = true
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209070272]
@@ -27,7 +27,7 @@ metadata/_edit_group_ = true
 [node name="Hitbox" type="Area2D" parent="." unique_id=1275666376]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1432914026]
-shape = SubResource("CapsuleShape2D_7u171")
+shape = SubResource("CircleShape2D_wbdyy")
 disabled = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

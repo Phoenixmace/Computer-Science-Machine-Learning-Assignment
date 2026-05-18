@@ -1,20 +1,16 @@
 [gd_scene format=3 uid="uid://d1l5qavdxcqkb"]
 
 [ext_resource type="Script" uid="uid://dyu2krfkfssep" path="res://scenes/game/ui.gd" id="1_5gpb8"]
-[ext_resource type="Texture2D" uid="uid://c075o1sgyip48" path="res://assets/game/Health Bar Inner.png" id="2_5gpb8"]
-[ext_resource type="Texture2D" uid="uid://bm6axlptcsffv" path="res://assets/game/Health Bar 2.png" id="2_h2d8c"]
+[ext_resource type="Texture2D" uid="uid://srwv071oaarx" path="res://assets/game/Health Bar 2 - Copy.png" id="2_h2d8c"]
+[ext_resource type="Texture2D" uid="uid://va10da8gilal" path="res://assets/game/Health Bar Inner - Copy.png" id="3_bggks"]
 
-[node name="UI" type="MarginContainer" unique_id=1067152854 node_paths=PackedStringArray("hp_bar")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UI" type="Node2D" unique_id=1465920031 node_paths=PackedStringArray("hp_bar")]
 script = ExtResource("1_5gpb8")
 hp_bar = NodePath("VBoxContainer/Count/Background/AspectRatioContainer/HPBar")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=546452154]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 100.0
 
 [node name="Count" type="MarginContainer" parent="VBoxContainer" unique_id=1459391329]
 layout_mode = 2
@@ -38,9 +34,8 @@ layout_mode = 2
 max_value = 140.0
 value = 1.0
 rounded = true
-nine_patch_stretch = true
 texture_over = ExtResource("2_h2d8c")
-texture_progress = ExtResource("2_5gpb8")
+texture_progress = ExtResource("3_bggks")
 metadata/_edit_group_ = true
 
 [node name="Title" type="TextureRect" parent="VBoxContainer/Count/Background" unique_id=918544623]
@@ -60,22 +55,20 @@ offset_right = 1024.0
 offset_bottom = 523.0283
 text = "HP"
 
-[node name="Control" type="Control" parent="VBoxContainer" unique_id=1509448887]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control" unique_id=287716173]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.72300005
-offset_right = -477.89606
+[node name="Control" type="MarginContainer" parent="." unique_id=23055086]
+layout_direction = 2
+offset_right = 1152.0
 offset_bottom = 100.0
 mouse_filter = 2
 
-[node name="Exit_Game" type="Button" parent="VBoxContainer/Control/VBoxContainer" unique_id=1553640282]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=287716173]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Exit_Game" type="Button" parent="Control/VBoxContainer" unique_id=1553640282]
 visibility_layer = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Exit Game"
 
-[connection signal="pressed" from="VBoxContainer/Control/VBoxContainer/Exit_Game" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Exit_Game" to="." method="_on_exit_game_pressed"]
