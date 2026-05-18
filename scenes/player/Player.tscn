@@ -10,12 +10,13 @@ radius = 165.10905
 radius = 177.00282
 
 [node name="Player" type="CharacterBody2D" unique_id=1714357750]
+motion_mode = 1
+slide_on_ceiling = false
 script = ExtResource("1_gfjak")
 DECELERATION_FACTOR = 0.5
 
 [node name="WallCollision" type="CollisionShape2D" parent="." unique_id=851979352]
 shape = SubResource("CircleShape2D_gfjak")
-disabled = true
 metadata/_edit_group_ = true
 
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=456316821]
@@ -25,6 +26,7 @@ texture = ExtResource("2_gfjak")
 metadata/_edit_group_ = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=250088298]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1813198745]
 shape = SubResource("CircleShape2D_4kuee")

@@ -13,6 +13,9 @@ radius = 132.01515
 
 [node name="BaseMelee" type="CharacterBody2D" unique_id=1365733535]
 scale = Vector2(0.5, 0.5)
+collision_layer = 8
+motion_mode = 1
+slide_on_ceiling = false
 script = ExtResource("1_7u171")
 
 [node name="WallCollision" type="CollisionShape2D" parent="." unique_id=1713408707]
